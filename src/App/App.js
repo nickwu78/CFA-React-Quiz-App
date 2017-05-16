@@ -27,6 +27,16 @@ class App extends Component {
         question: 'Who is the best coding YouTuber?',
         correct_answer: 'FunFunFunction',
         possible_answers: ['Coding Train', 'FunFunFunction', 'Young Lamb', 'Wes Bos']
+      },
+      {
+        question: 'How many states are there in Australia?',
+        correct_answer: '6',
+        possible_answers: ['5', '7', '6', '10']
+      },
+      {
+        question: 'Which is not a programming language?',
+        correct_answer: 'Lab',
+        possible_answers: ['CHICKEN', 'python', 'racket', 'Lab']
       }
     ]
   }
