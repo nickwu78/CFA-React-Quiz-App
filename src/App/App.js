@@ -1,3 +1,5 @@
+// import all the things. The Component is desctructured from react to avoid having to call React.component all the time.
+
 import React, { Component } from 'react';
 import Question from '../Question/Question';
 import ProgressBar from '../ProgressBar/ProgressBar';
@@ -7,13 +9,16 @@ import Results from '../Results/Results';
 import styles from './App.css'
 
 class App extends Component {
+  // The constructor is called first, and is the place to initialise state. It takes in props
   constructor(props) {
     super(props);
+    // Initialises the state.
     this.state = {
       progress: 0,
       selected: 'No Answer Selected',
       score: 0
     };
+    //JS class methods are not bound by default. Bind the callbacks
     this.updateSelected = this.updateSelected.bind(this)
     this.submitAnswer = this.submitAnswer.bind(this)
     this.resetQuiz = this.resetQuiz.bind(this)
@@ -40,7 +45,7 @@ class App extends Component {
       }
     ]
   }
-
+  // updateSelected takes in an answer, and sets the state of "selected" to answer. If it wasn't bound above in the constructor, this.setState would not work.
   updateSelected (answer) {
     this.setState({
       selected: answer
@@ -69,11 +74,11 @@ class App extends Component {
     })
   }
 
+// App.js passes props to each component
 render() {
     return (
       <div className="App">
         <h2 className="App-intro quiz">Quiz App</h2>
-
         {this.state.progress < this.quiz_data.length ? (
           <div>
             <Question current_question={this.quiz_data[this.state.progress].question} />
@@ -87,7 +92,7 @@ render() {
         )
         : (
         <Results score={this.state.score} handleReset={this.resetQuiz} end_message="Congratulations, you have finished!" />
-         )}
+        )}
       </div>
     );
   }
